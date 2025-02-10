@@ -87,6 +87,7 @@ export default function SocialShare() {
       <div className='card'>
         <div className='card-body'>
           <h2 className='card-title mb-4'>Upload an Image</h2>
+          {/* Image */}
           <div className='form-control'>
             <label className='label'>
               <span className='label-text'>Choose an Image file</span>
@@ -103,7 +104,8 @@ export default function SocialShare() {
               <progress className='progress progress-primary w-full'></progress>
             </div>
           )}
-
+          
+          {/* Format for Image */}
           {uploadedImage && (
             <div>
               <h2 className=''>Select Social Media Format</h2>
