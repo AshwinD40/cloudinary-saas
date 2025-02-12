@@ -3,7 +3,7 @@
 import React,{useState, useEffect, useRef} from 'react'
 import { CldImage } from 'next-cloudinary';
 
-const socialFormats ={
+const socialFormats = {
   "Instagram Square (1:1)":{ width: 1080, height: 1080, aspectRatio:"1:1"},
   "Instagram Portrait (4:5)":{ width: 1080, height: 1350, aspectRatio:"4:5"},
   "Twitter Post (16:9)":{ width: 1200, height: 675, aspectRatio:"16:9"},
@@ -75,16 +75,17 @@ export default function SocialShare() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
     })
   }
 
   return (
-    <div className='container mx-auto p-4 max-w-4xl'>
+    <div className='container mx-auto p-4 max-w-4xl '>
       <h1 className='text-3xl font-bold mb-4 text-center'>
         Social Media Image Creator
       </h1>
 
-      <div className='card'>
+      <div className='card border border-primary'>
         <div className='card-body'>
           <h2 className='card-title mb-4'>Upload an Image</h2>
           {/* Image */}
@@ -107,13 +108,14 @@ export default function SocialShare() {
           
           {/* Format for Image */}
           {uploadedImage && (
-            <div>
-              <h2 className=''>Select Social Media Format</h2>
-              <div>
+            <div className='mt-6 border border-primary'>
+              <h2 className=' card-title mb-4'>Select Social Media Format</h2>
+              <div className='form-control'>
                 <select
                   className='select select-bordered  w-full'
                   value={selectedFormat}
-                  onChange={(e) => setSelectedFormat(e.target.value as SocialFormat)}
+                  onChange={(e) => 
+                    setSelectedFormat(e.target.value as SocialFormat)}
                 >
                   {Object.keys(socialFormats).map((format) =>(
                     <option key={format} value={format}>
@@ -126,7 +128,7 @@ export default function SocialShare() {
               {/* preview */}
               <div className='mt-6 relative'>
                 <h3 className='text-lg font-semibold mb-2'>
-                  Preview
+                  Preview:
                 </h3>
                 <div className=' flex justify-center'>
                   {isTransforming && (
