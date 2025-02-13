@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
             }
         )
         return NextResponse.json(
-            {publicId: result.public_id}, 
+            {publicId: result.public_id, secure_url: result.secure_url }, 
             {status:200}
         );
 

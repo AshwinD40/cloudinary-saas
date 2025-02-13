@@ -38,6 +38,7 @@ export default function VideoUpload() {
       const response = await axios.post('/api/video-upload', formData)
 
       // check for 200 response
+      console.log(response)
     } catch (error) {
       console.error(error)
     }

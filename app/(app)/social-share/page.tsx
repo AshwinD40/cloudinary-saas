@@ -65,18 +65,21 @@ export default function SocialShare() {
     fetch(imageRef.current.src)
     .then((response) => response.blob())
     .then((blob) => {
-      const url = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = `${selectedFormat
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${selectedFormat ?
+        selectedFormat
         .replace(/\s+/g, '_')
-        .toLowerCase()}.png`;
+        .toLowerCase()
+        : 'download'}.png`;
       document.body.appendChild(link)
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-      document.body.removeChild(link);
+      
     })
+    .catch((error) => console.log("Error downloading image:", error));
   }
 
   return (
@@ -107,8 +110,8 @@ export default function SocialShare() {
           )}
           
           {/* Format for Image */}
-          {uploadedImage && (
-            <div className='mt-6 border border-primary'>
+          {uploadedImage && uploadedImage != "" ? (
+            <div className='mt-6 '>
               <h2 className=' card-title mb-4'>Select Social Media Format</h2>
               <div className='form-control'>
                 <select
@@ -126,7 +129,7 @@ export default function SocialShare() {
               </div>
 
               {/* preview */}
-              <div className='mt-6 relative'>
+              <div className='mt-6 relative '>
                 <h3 className='text-lg font-semibold mb-2'>
                   Preview:
                 </h3>
@@ -147,6 +150,7 @@ export default function SocialShare() {
                     gravity='auto'
                     ref={imageRef}
                     onLoad={() => setIsTransforming(false)}
+                    className='border border-secondary rounded-lg'
                   />
                 </div>
               </div>
@@ -160,6 +164,11 @@ export default function SocialShare() {
                 </button>
               </div>
             </div>
+          ) : (
+            <div className='flex items-center rounded-xl bg-slate-900 justify-center w-full h-64 text-gray-500'>
+              No image available
+            </div>
+
           )}
         </div>
       </div>

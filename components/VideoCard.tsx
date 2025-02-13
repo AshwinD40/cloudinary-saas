@@ -5,7 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import dayjs from 'dayjs'
 import {filesize} from 'filesize'
 import { video } from '@prisma/client'
-import Image from 'next/image'
+
 
 
 
@@ -100,7 +100,7 @@ const  VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
                     />
                 )
             ) : (
-                <Image
+                <img
                     src={getThumbnailUrl(video.publicId)}
                     alt={video.title}
                     className=' w-full h-full object-cover'
