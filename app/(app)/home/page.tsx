@@ -10,7 +10,7 @@ export default function Home() {
 
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
-  const [errors , setError] = useState<string | null>(null);
+ 
 
   const fetchVideos = useCallback(async () => {
     try {
@@ -24,9 +24,8 @@ export default function Home() {
       }
       
     } catch (error) {
-      console.log(errors)
       console.error("Failed to fetch videos", error)
-      setError("Failed to fetch videos")
+     
     }
     finally {
       setLoading(false)
