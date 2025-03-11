@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 import { auth } from '@clerk/nextjs/server';
+import { CloudinaryUploadResult } from '@/middleware';
  
 // Configuration
 cloudinary.config({ 
@@ -9,12 +10,6 @@ cloudinary.config({
         api_secret: process.env.CLOUDINARY_API_SECRET
          // Click 'View API Keys' above to copy your API secret
     });
-
-interface CloudinaryUploadResult {
-    public_id: string;
-    [key:string]: any;
-
-}
 
 export async function POST(request: NextRequest) {
     const {userId} = await auth();

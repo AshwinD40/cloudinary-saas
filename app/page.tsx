@@ -1,16 +1,20 @@
 import Home from './(app)/home/page';
 import Applayout from './(app)/layout';
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function Page() {
   return (
     <div>
-     <Applayout children={
-      <Home/>
-      }
-    />
+      <Applayout>
+        <Home />
+      </Applayout>
     </div>
   )
 }
 
-export default Page
+Page.propTypes = {
+  children: PropTypes.node
+};
+
+export default Page;

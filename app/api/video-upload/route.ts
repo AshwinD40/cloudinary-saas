@@ -14,10 +14,15 @@ cloudinary.config({
 
 interface CloudinaryUploadResult {
     public_id: string;
-    bytes: number
-    duration?: number
-    [key: string]: any;
-
+    bytes: number;
+    duration?: number;
+    width?: number;
+    height?: number;
+    format?: string;
+    resource_type?: string;
+    created_at?: string;
+    secure_url?: string;
+    // Add other specific properties returned by Cloudinary if needed
 }
 
 export async function POST(request: NextRequest) {
