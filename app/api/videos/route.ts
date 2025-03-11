@@ -1,7 +1,6 @@
 
 import {NextRequest , NextResponse } from "next/server"
 import { PrismaClient } from "@prisma/client"
-import { error } from "console"
 
 const prisma = new PrismaClient()
 
@@ -12,7 +11,7 @@ export async function GET(request : NextRequest){
         })   
 
         return NextResponse.json(video)
-    }catch(e){
+    }catch(error){
         return NextResponse.json(
             {error: "Something went wrong with fetching video" },
             {status: 500}

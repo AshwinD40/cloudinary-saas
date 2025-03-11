@@ -25,6 +25,7 @@ export default function Home() {
       
     } catch (error) {
       console.log(errors)
+      console.error("Failed to fetch videos", error)
       setError("Failed to fetch videos")
     }
     finally {

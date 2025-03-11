@@ -2,7 +2,6 @@
 
 import React, {useState} from 'react'
 import axios from 'axios'
-import { useRouter } from 'next/navigation'
 
 export default function VideoUpload() {
 
@@ -11,7 +10,7 @@ export default function VideoUpload() {
   const [description, setDescription] = useState<string>('')
   const [isUploading, setIsUploading] = useState<boolean>(false)
 
-  const router = useRouter()
+
 
   // max file size of 70 mb
   const MAX_FILE_SIZE = 70 * 1024 * 1024
